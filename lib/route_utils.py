@@ -36,7 +36,7 @@ def _is_route_unique(gen_route: np.ndarray, routes: List[np.ndarray]) -> bool:
 
 
 def _cross_routes(generator, route_a: np.ndarray, route_b: np.ndarray):
-    index_1 = generator.integers(low=0, high=len(route_a) - 1)  # route musi być większy niż 0
+    index_1 = generator.integers(low=0, high=len(route_a) - 1)
     index_2 = generator.integers(low=index_1 + 1, high=len(route_a))
 
     # new_route, _ = np.split(route_a, 2, axis=0)
@@ -86,7 +86,7 @@ def _mutate_routes(generator, routes) -> List[np.ndarray]:
     if sum(generator.choice([0, 1], 1, p=[0.95, 0.05])) > 0:
         mutated_routes = []
         for _route in routes:
-            index_1 = generator.integers(low=0, high=len(_route) - 1)  # route musi być większy niż 0
+            index_1 = generator.integers(low=0, high=len(_route) - 1)
             index_2 = generator.integers(low=index_1 + 1, high=len(_route))
             if sum(generator.choice([0, 1], 1, p=[0.5, 0.5])) > 0:
                 mutated_routes.append(_replace_indexes(_route, index_1, index_2))
